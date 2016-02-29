@@ -1,17 +1,41 @@
 #!/usr/bin/env node
 
 var checker = require('../lib/index');
+var treeify = require('treeify');
+var process = require('process');
+var fs = require('fs');
+var path = require('path');
 
 var parsed = require('raptor-args')
     .createParser({
-        '--help': {
+        '--help -h': {
             type: 'boolean',
             description: 'Show this help message'
         },
+        '--type -t': {
+            type: 'string',
+            description: 'Export format, could be json (default) or tree',
+            defaultValue: 'json'
+        },
         '--export -e': {
             type: 'string',
-            description: 'Export format, could be json or tree (default)',
-            defaultValue: 'tree'
+            description: 'The name of exported file',
+            defaultValue: ''
+        },
+        '--path -p': {
+            type: 'string',
+            description: 'Path to the .bowerrc or .bower',
+            defaultValue: '.'
+        },
+        '--licenses -l': {
+            type: 'string',
+            description: 'Path to the custom licenses',
+            defaultValue: ''
+        },
+        'ignore -i': {
+            type: 'string',
+            description: 'Path to the ignored licenses',
+            defaultValue: ''
         }
 
     })
@@ -32,14 +56,55 @@ var parsed = require('raptor-args')
     })
     .parse();
 
-checker.init({}, function(json, err){
+function formatTree(data){
+    return treeify.asTree(data, true);
+}
+
+function formatJson(data){
+    return JSON.stringify(data, null, 4);
+}
+
+var options = {
+    customLicensePath: process.cwd() + '/licenses.json',
+    ignoredLicensePath: process.cwd() + '/ignore.json'
+};
+
+if (parsed.licenses && parsed.licenses.length > 0) {
+    options.customLicensePath = path.resolve(parsed.licenses);
+} 
+
+if (parsed.ignore && parsed.ignore.length > 0) {
+    options.ignoredLicensePath = path.resolve(parsed.ignore);
+} 
+
+var exportFilePath = parsed.export ? parsed.export : '.';
+exportFilePath = path.resolve(exportFilePath);
+
+if (parsed.path && parsed.path !== '.') {
+    try {
+        process.chdir(parsed.path);
+    }
+    catch (err) {
+        console.log(err);
+        process.exit()
+    }
+}
+
+checker.init(options, function(result, err){
     if (!!err) {
         console.log(err);
-    } else {
-        if (parsed.export==='json'){
-            checker.printJson(json);
-        } else{
-            checker.printTree(json);
+    } else  {
+        var output = parsed.type==='tree' ? formatTree(result) : formatJson(result);
+
+        if (parsed.export && parsed.export.length > 0) {
+            fs.writeFile(exportFilePath, output, function (err, data) {
+                if (err) {
+                    return console.log(err);
+                }
+                console.log('File %s is saved.', exportFilePath);
+            });
+        } else {
+            console.log(output);
         }
-    }
+    } 
 });
