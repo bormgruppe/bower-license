@@ -34,7 +34,7 @@ var parsed = require('raptor-args')
         },
         'ignore -i': {
             type: 'string',
-            description: 'Path to the ignored licenses',
+            description: 'Path to the ignored dependencies',
             defaultValue: ''
         }
 
@@ -66,7 +66,7 @@ function formatJson(data){
 
 var options = {
     customLicensePath: process.cwd() + '/licenses.json',
-    ignoredLicensePath: process.cwd() + '/ignore.json'
+    ignoredDependencyPath: process.cwd() + '/ignore.json'
 };
 
 if (parsed.licenses && parsed.licenses.length > 0) {
@@ -74,7 +74,7 @@ if (parsed.licenses && parsed.licenses.length > 0) {
 } 
 
 if (parsed.ignore && parsed.ignore.length > 0) {
-    options.ignoredLicensePath = path.resolve(parsed.ignore);
+    options.ignoredDependencyPath = path.resolve(parsed.ignore);
 } 
 
 var exportFilePath = parsed.export ? parsed.export : '.';
