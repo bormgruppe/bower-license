@@ -28,6 +28,28 @@ bower-license -p/--path    [path_to_bowerrc]
               -h/--help    show tips
 ```
 
+The format of `custom-licenses` is JSON and it should be as follows. The `@ + license name` is a shortcut for 
+the content of known license (defined in file `contents.js`).
+```
+{
+  "xxxx": {
+    "licenses": [{"type": "yyyy", "content":"zzzz"}]
+  },
+
+  "example2": {
+    "licenses": [{"type": "BSD", "content": "@BSD"}, {"type": "MIT", "content": "@MIT"}]
+  }
+}
+```
+
+The format of `ignored-dependencies` is JSON and it should be as follows:
+```
+{
+  "names": ["dependency1", "dependency2", "dependency3"],
+  "regex": ["^regex1", "regex2"]
+}
+```
+
 Used as a library:
 
 ```
