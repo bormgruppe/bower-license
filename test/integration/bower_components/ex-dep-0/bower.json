@@ -1,0 +1,14 @@
+{
+  "name": "ex-dep-0",
+  "version": "0.2.7",
+  "homepage": "https://github.com/xxx/ex-dep-0.js",
+
+  "description": "there is license field defined in bower.json",
+  "license": "MIT",
+  "main": [
+    "lib/ex-dep-0.js"
+  ],
+  "ignore": [
+    "**/.*"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "test-component",
+  "componn": "0.1",
+  "homepage": "https://github.com/bormgruppe/test-component",
+  "description": "test",
+  "ignore": [
+    "**/.*"
+  ]
+}

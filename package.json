@@ -7,7 +7,11 @@
   "bin": {
     "bower-license": "./bin/bower-license"
   },
-  "scripts": {},
+  "scripts": {
+      "test-integration": "cd test/integration && mocha && cd ../..",
+      "test-unit": "mocha test/unit",
+      "test": "npm run test-integration && npm run test-unit"
+    },
   "repository": {
     "type": "git",
     "url": "https://github.com/AceMetrix/bower-license.git"

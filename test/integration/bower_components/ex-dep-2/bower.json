@@ -1,0 +1,14 @@
+{
+  "name": "ex-dep-2",
+  "version": "0.2.7",
+  "homepage": "https://github.com/xxx/ex-dep-2.js",
+
+  "description": "",
+  "license": "MIT",
+  "main": [
+    "lib/ex-dep-2.js"
+  ],
+  "ignore": [
+    "**/.*"
+  ]
+}

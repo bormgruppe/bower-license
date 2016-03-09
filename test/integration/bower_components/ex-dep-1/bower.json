@@ -1,0 +1,13 @@
+{
+  "name": "ex-dep-1",
+  "version": "0.2.7",
+  "homepage": "https://github.com/xxx/ex-dep-1.js",
+
+  "description": "licenses are defined in package.json",
+  "main": [
+    "lib/ex-dep-1.js"
+  ],
+  "ignore": [
+    "**/.*"
+  ]
+}
