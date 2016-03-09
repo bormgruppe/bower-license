@@ -83,8 +83,7 @@ exportFilePath = path.resolve(exportFilePath);
 if (parsed.path && parsed.path !== '.') {
     try {
         process.chdir(parsed.path);
-    }
-    catch (err) {
+    } catch (err) {
         console.log(err);
         process.exit()
     }
@@ -94,7 +93,7 @@ checker.init(options, function(result, err){
     if (!!err) {
         console.log(err);
     } else  {
-        var output = parsed.type==='tree' ? formatTree(result) : formatJson(result);
+        var output = parsed.type === 'tree' ? formatTree(result) : formatJson(result);
 
         if (parsed.export && parsed.export.length > 0) {
             fs.writeFile(exportFilePath, output, function (err, data) {
