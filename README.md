@@ -6,7 +6,7 @@ Show a project's bower dependencies and their licenses
 #Installation
 
 ```
-TODO
+npm install -g https://github.com/bormgruppe/bower-license.git
 
 ```
 #Usage
