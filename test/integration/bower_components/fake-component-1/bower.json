@@ -1,12 +1,10 @@
 {
-  "name": "ex-dep-1",
+  "name": "fake-component-1",
   "version": "0.2.7",
-  "homepage": "https://github.com/xxx/ex-dep-1.js",
+  "homepage": "https://github.com/fake/fake-component-1",
 
   "description": "licenses are defined in package.json",
-  "main": [
-    "lib/ex-dep-1.js"
-  ],
+
   "ignore": [
     "**/.*"
   ]

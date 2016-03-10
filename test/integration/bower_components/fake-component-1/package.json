@@ -1,11 +1,11 @@
 {
-  "name": "ex-dep-1",
+  "name": "fake-component-1",
   "version": "0.4.1",
   "description": "licenses are defined in package.json",
   "main": "./lib/index",
   "repository": {
     "type": "git",
-    "url": "https://github.com/AceMetrix/bower-license.git"
+    "url": "https://github.com/fake/fake-component-1.git"
   },
   "license": "Apache-2.0",
   "dependencies": {

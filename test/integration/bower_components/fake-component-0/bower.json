@@ -1,12 +1,12 @@
 {
-  "name": "ex-dep-0",
+  "name": "fake-component-0",
   "version": "0.2.7",
-  "homepage": "https://github.com/xxx/ex-dep-0.js",
+  "homepage": "https://github.com/fake/fake-component-0",
 
   "description": "there is license field defined in bower.json",
   "license": "MIT",
   "main": [
-    "lib/ex-dep-0.js"
+    "lib/fake-component-0.js"
   ],
   "ignore": [
     "**/.*"
