@@ -4,7 +4,6 @@
   "homepage": "https://github.com/fake/fake-component-2.js",
 
   "description": "",
-  "license": "MIT",
   "main": [
     "lib/fake-component-2.js"
   ],
