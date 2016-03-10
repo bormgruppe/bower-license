@@ -1,17 +1,12 @@
 var assert = require('assert');
 var fs = require('fs');
-var treeify = require('treeify');
-var _ = require('lodash');
+
 var bower_license = require('../../lib/index.js'); 
 
 var options = {
     customLicensePath: process.cwd() + '/licenses.json',
     ignoredDependencyPath: process.cwd() + '/ignore.json'
 };
-
-function formatTree(data){
-    return treeify.asTree(data, true);
-}
 
 function formatJson(data){
     return JSON.stringify(data, null, 4);
@@ -22,7 +17,7 @@ describe('basic intergration test', function() {
         it('should return the correct value', function (done) {
             var json_result = '';
             try {
-                json_result = fs.readFileSync('json_result', 'utf8');
+                json_result = JSON.parse(fs.readFileSync('json_result', 'utf8'));
             } catch (err) {
                 assert(false, 'cannot read file');
                 done();
@@ -33,8 +28,7 @@ describe('basic intergration test', function() {
                 if (!!err) {
                     assert(false, 'cannot process');
                 } else  {
-                    var output = type === 'tree' ? formatTree(result) : formatJson(result);
-                    assert.equal(output, json_result);
+                    assert.deepEqual(result, json_result);
                 } 
                 done();
             });
@@ -58,8 +52,7 @@ describe('basic intergration test', function() {
                     var output = type === 'tree' ? formatTree(result) : formatJson(result);
                     fs.writeFileSync(temp_file, output);
                     var result_file = JSON.parse(fs.readFileSync(temp_file, 'utf8'));
-                    // deeply compare two object 
-                    assert.equal(_.isEqual(result, result_file), true);
+                    assert.deepEqual(result, result_file);
                 } 
                 done();
             });
